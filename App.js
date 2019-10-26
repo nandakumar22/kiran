@@ -1,114 +1,71 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, { Component } from 'react';
+import { View, Text, TextInput, ToastAndroid, TouchableOpacity, Keyboard, Alert } from 'react-native';
+import { Container, Header, Content, Form, Item, Input, Label, } from 'native-base';
 
-import React, {Fragment} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      password: '',
+      email: ''
+    }
+  }
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  validate() {
+    //include your validation inside if condition
+    if (this.state.password == "123$" && this.state.email == 'doogadmin.com') {
+     alert('Login success');
+      // navigate to next screen
+    }
 
-const App = () => {
-  return (
-    <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </Fragment>
-  );
-};
+    else if (this.state.email !== "doogadmin.com") {
+     alert('incorrect email');
+    }
+    
+    else if (this.state.password !== "123$") {
+     alert('incorrect password');
+    }
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+    alert("Sorry Entered Value Dose not Exist.")
+  
+  }
 
-export default App;
+  render() {
+    return (
+      <View style={{ justifyContent: 'center', backgroundColor: '#ddd', flex: 1 }}>
+
+        <Label>Enter Email</Label>
+        <Item inlineLabel>
+
+          <Input
+            style={{ width: '90%', backgroundColor: 'white' }}
+            returnKeyType="go"
+            autoCapitalize="none"
+            autoCorrect={false}
+            autoFocus={true}
+            onChangeText={(email) => this.setState({ email })} />
+        </Item>
+
+        <Label>Enter Password</Label>
+        <Item inlineLabel>
+
+          <Input
+            style={{ width: '60%', backgroundColor: 'white' }}
+            returnKeyType="go"
+            secureTextEntry
+            autoCapitalize="none"
+            autoCorrect={false}
+            autoFocus={true}
+            onChangeText={(password) => this.setState({ password })} />
+        </Item>
+
+
+        <TouchableOpacity onPress={() => this.validate()}
+          style={{ padding: 15, marginTop: 20, width: 250, justifyContent: 'center', alignSelf: 'center', backgroundColor: 'rgb(102, 192, 231)' }}>
+          <Text style={{ textAlign: 'center' }}>Next</Text>
+        </TouchableOpacity>
+
+      </View>
+    );
+  }
+}
