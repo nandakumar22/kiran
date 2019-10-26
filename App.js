@@ -69,3 +69,44 @@ export default class App extends Component {
     );
   }
 }
+
+
+
+import React, { Component } from 'react'; 
+import { View, Picker } from 'react-native'; 
+ 
+export default class myApp extends Component { 
+ 
+  constructor() { 
+    super(); 
+ 
+    this.state = { 
+      textValue: '' 
+    } 
+    //The following line must be added to attach "state",  for non React methods 
+    this.fun_name = this.fun_name.bind(this); 
+  } 
+  fun_name(value) { 
+    this.setState({ textValue: value }) 
+  } 
+ 
+  render() { 
+    return ( 
+      <View> 
+        <Picker selectedValue={this.state.textValue} onValueChange={this.fun_name}> 
+          <Picker.Item label="HTML Code Play" value="1" /> 
+          <Picker.Item label="Android Code Play" value="2" /> 
+          <Picker.Item label="3Dthreejs Code Play" value="3" /> 
+        </Picker> 
+ 
+        <Picker> 
+          <Picker.Item label="Test 1" value="1" /> 
+          <Picker.Item label="Test 2" value="2" /> 
+          <Picker.Item label="Test 3" value="3" /> 
+        </Picker> 
+      </View> 
+    ); 
+  } 
+}
+
+
