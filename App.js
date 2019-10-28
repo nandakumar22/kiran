@@ -111,3 +111,25 @@ export default class myApp extends Component {
 }
 
 
+
+
+
+
+
+ componentDidMount() {
+    fetch('https://aboutreact.000webhostapp.com/demo/webservice/demosearchables.php')
+      .then(response => response.json())
+      .then(responseJson => {
+        //Successful response from the API Call
+        this.setState({
+          serverData: [...this.state.serverData, ...responseJson.results],
+          //adding the new data in Data Source of the SearchableDropdown
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+
+
