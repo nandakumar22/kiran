@@ -42,20 +42,13 @@ export default class App extends Component {
 
   render() {
     return (
-
-
       <View style={{  padding: 40,backgroundColor: 'white', flex: 1 }}>
-
-       
         <Item floatingLabel style={{ borderColor: 'black',
                 borderWidth:8, backgroundColor: 'transparent',}}>
            <Label>Enter Email</Label>
           <Input
             onChangeText={(email) => this.setState({ email })} />
         </Item>
-
-
-
 
         <Item floatingLabel style={{ borderColor: 'black',
                 borderWidth:8, backgroundColor: 'transparent',marginTop:20}}>
@@ -65,7 +58,6 @@ export default class App extends Component {
               autoCapitalize="none"
                autoCorrect={false}
               autoFocus={true}
-
             onChangeText={(password) => this.setState({ password })} />
         </Item>
 
@@ -76,8 +68,6 @@ export default class App extends Component {
         </TouchableOpacity>
 
       </View>
-
-    
     );
   }
 }
@@ -91,7 +81,6 @@ export default class myApp extends Component {
  
   constructor() { 
     super(); 
- 
     this.state = { 
       textValue: '' 
     } 
